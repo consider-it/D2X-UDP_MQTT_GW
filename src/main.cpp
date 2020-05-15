@@ -413,21 +413,58 @@ int main(int argc, char* argv[]) {
 
   int mqttRC = MQTTClient_connect(mqttClient, &mqttConnOpts);
   if (MQTTCLIENT_SUCCESS != mqttRC) {
-    std::cerr << "[ERROR] Failed to connect to MQTT broker, error " << mqttRC << ":";
+    std::cerr << "[ERROR] Failed to connect to MQTT broker, error " << mqttRC << ": ";
     switch (mqttRC) {
     case -1:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
-      std::cerr << "Unacceptable protocol version\n";
-      break;
-    case -2:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
-      std::cerr << "Identifier rejected\n";
+      std::cerr << "MQTTCLIENT_FAILURE\n";
       break;
     case -3:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
-      std::cerr << "Server unavailabl\n";
+      std::cerr << "MQTTCLIENT_DISCONNECTED\n";
       break;
     case -4:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_MAX_MESSAGES_INFLIGHT\n";
+      break;
+    case -5:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_BAD_UTF8_STRING\n";
+      break;
+    case -6:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_NULL_PARAMETER\n";
+      break;
+    case -7:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_TOPICNAME_TRUNCATED\n";
+      break;
+    case -8:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_BAD_STRUCTURE\n";
+      break;
+    case -10:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_SSL_NOT_SUPPORTED\n";
+      break;
+    case -11:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_BAD_MQTT_VERSION\n";
+      break;
+    case -14:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_BAD_PROTOCOL\n";
+      break;
+    case -15:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_BAD_MQTT_OPTION\n";
+      break;
+    case -16:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "MQTTCLIENT_WRONG_MQTT_VERSION\n";
+      break;
+
+    case 1:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "Unacceptable protocol version\n";
+      break;
+    case 2:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "Identifier rejected\n";
+      break;
+    case 3:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
+      std::cerr << "Server unavailabl\n";
+      break;
+    case 4:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers
       std::cerr << "Bad user name or password\n";
       break;
-    case -5:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
+    case 5:  // NOLINT(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
       std::cerr << "Not authorized\n";
       break;
     default:
