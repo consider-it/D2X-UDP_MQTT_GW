@@ -8,7 +8,6 @@
  * @copyright (c) consider it GmbH, 2020
  */
 
-#include <algorithm>
 #include <csignal>
 #include <fstream>
 #include <iostream>
@@ -95,7 +94,7 @@ struct AppOptions {
         break;
       }
       if (0 == arg.find("-v")) {
-        this->verbosity = std::count(arg.begin(), arg.end(), 'v');
+        this->verbosity = 1;
 
       } else if (0 == arg.find("-c=")) {
         this->confPath = arg.substr(arg.find('=') + 1);
@@ -282,7 +281,7 @@ struct AppOptions {
     std::cout << "\n";
     std::cout << "optional arguments:\n";
     std::cout << "  -h,          show this help message and exit\n";
-    std::cout << "  -v,          increase output verbosity (-vv for VERBOSE)\n";
+    std::cout << "  -v,          increase output verbosity\n";
     std::cout << "  -c=FILE,     path to config file (default: " CONF_FILE "\n";
   }
 
