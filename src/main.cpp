@@ -8,6 +8,7 @@
  * @copyright (c) consider it GmbH, 2020
  */
 
+#include <algorithm>
 #include <csignal>
 #include <fstream>
 #include <iostream>
