@@ -1,0 +1,16 @@
+/**
+ * @file      version.h
+ * @brief     Auto-generated version number preprocessor definitions
+ * 
+ * These values will be calculated by CMake. Do not modify manually!
+ *
+ * @author    Jannik Beyerstedt <beyerstedt@consider-it.de>
+ * @copyright (c) consider it GmbH, 2020
+ */
+
+#ifndef _VERSION_H
+#define _VERSION_H
+
+#define GIT_VERSION_TAG "@GIT_VERSION_TAG@"
+
+#endif /* _VERSION_H */

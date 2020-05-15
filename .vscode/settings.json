@@ -1,0 +1,8 @@
+{
+  "C_Cpp.clang_format_style": "file",
+  "C_Cpp.clang_format_sortIncludes": true,
+  "editor.formatOnSave": true,
+  "cmake.configureOnOpen": true,
+  "cmake.generator": "Unix Makefiles",
+  "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools",
+}
