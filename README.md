@@ -10,8 +10,9 @@ Only the POSIX(-style) socket API is supported and unfortunately the application
 ### Prerequisites: Eclipse Paho MQTT Client Library
 Assuming, that you have a C build toolchain ready (see below), go to a directory of your choice and do:
 ```shell
-git clone https://github.com/eclipse/paho.mqtt.c.git ./paho-mqtt-c
+git clone --depth 1 --recursive -b v1.3.6 https://github.com/eclipse/paho.mqtt.c.git ./paho-mqtt-c
 cd paho-mqtt-c
+
 make
 sudo make install
 ```
@@ -86,6 +87,12 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 The executable can be installed (to `usr/local/bin` on Linux) with:
 ```shell
 sudo make install
+
+# (optional) copy the example config
+cp udpmqttgw.example.conf /etc/udpmqttgw.conf
+
+# (optional) symlink the config to the home directory
+ln -s /etc/udpmqttgw.conf /home/root/udpmqttgw.conf
 ```
 
 
@@ -107,3 +114,12 @@ All CLI parameters are explaied when calling the application with the `-h` flag.
 The different config file options for the MQTT connection are named in the same way, as the Paho MQTT library uses them.
 For a full documentation, what each option does, see [the Paho library documentation](https://www.eclipse.org/paho/files/mqttdoc/MQTTClient/html/struct_m_q_t_t_client__connect_options.html).
 The TLS options can be found at the [MQTTClient_SSLOptions struct](https://www.eclipse.org/paho/files/mqttdoc/MQTTClient/html/struct_m_q_t_t_client___s_s_l_options.html).
+
+
+
+## Debugging
+Debug output (to stdout) of the MQTT library is controlled by environment variables:
+```shell
+export MQTT_C_CLIENT_TRACE=ON
+export MQTT_C_CLIENT_TRACE_LEVEL=PROTOCOL # one of: ERROR, PROTOCOL, MINIMUM, MEDIUM and MAXIMUM (from least to most verbose)
+```

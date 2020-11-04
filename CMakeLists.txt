@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.8)
 project(udpmqttgw)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -57,7 +57,7 @@ if(CLANG_TIDY)
   foreach(X IN ITEMS ${TIDY_INCLUDE_DIRS})
     list(APPEND TIDY_INCLUDE_DIRS_ARG "-I${X}")
   endforeach()
-  
+
   # add a Make target named "tidy" (to run clang-tidy manually)
   add_custom_target(tidy
     COMMAND ${CLANG_TIDY}
