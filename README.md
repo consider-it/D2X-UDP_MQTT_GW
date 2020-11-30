@@ -93,6 +93,12 @@ cp udpmqttgw.example.conf /etc/udpmqttgw.conf
 
 # (optional) symlink the config to the home directory
 ln -s /etc/udpmqttgw.conf /home/root/udpmqttgw.conf
+
+# (optional) install a systemd unit
+cp udpmqttgw.service /etc/systemd/system
+sudo systemctl daemon-reload
+sudo systemctl enable udpmqttgw.service
+sudo systemctl start udpmqttgw.service
 ```
 
 
